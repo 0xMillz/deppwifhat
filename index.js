@@ -29,7 +29,7 @@ window.onload = function() {
   const images = document.querySelectorAll('.commerce');
 
   // Loop through each image
-  for (const i = 0; i < images.length; i++) {
+  for (let i = 0; i < images.length; i++) {
       // Add click event listener to each image
       images[i].addEventListener('click', function(event) {
           // Redirect to the URL specified in the 'data-url' attribute of the clicked image
