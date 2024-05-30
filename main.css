@@ -110,6 +110,11 @@ a p {
         width: 100px;
         padding-left: 1rem;
     }
+
+    #ca-num {
+        font-size: .5rem;
+        width: fit-content;
+    }
 }
 
 button {
@@ -797,10 +802,10 @@ input {
 }
 
 #ca-num {
-    font-weight: 500;
+    font-weight: 400;
     margin-left: 2rem;
     color: white;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     font-family: "Roboto", sans-serif;
 
     .sect-cont {
@@ -1233,7 +1238,7 @@ input {
 
         #ca-num {
             /*margin-left: 10rem;*/
-            font-size: 3rem;
+            font-size: 2rem;
             font-family: “Roboto”, sans-serif;
         }
 
@@ -1400,7 +1405,7 @@ footer {
     border: 1px solid white;
     padding: 2px;
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
 }
 
 #stay-tuned {
@@ -1409,4 +1414,22 @@ footer {
     padding: 1rem;
     margin: 1rem 1rem 1rem 4rem;
     color: white;
+}
+
+#quote-container {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: gray;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#quote {
+    margin: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }

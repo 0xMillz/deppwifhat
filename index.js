@@ -1,39 +1,44 @@
-function copyToClipboard(event) {
-  /* Get the SVG element and its parent */
-  const svgElement = event.target;
-  const parentDiv = svgElement.parentNode;
+const quotes = [
+    'The only creatures that are evolved enough to convey pure love are dogs and infants<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'I think the thing to do is enjoy the ride while you are on it<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'Tomorrow it will all be over<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span> then I will have to go back to selling pens again<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'My favorite color is black<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> And I like black because it is a modest and arrogant color<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> Perhaps that is why I like it<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'Escapism is survival to me<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'I think everybody is nuts<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'I am an old<span style="font-family: Arial; color: rgb(34, 62, 145)">&#45;</span>fashioned guy<span style="font-family: Arial, Helvetica, sans-serif; color: rgb(34, 62, 145)">&#44;</span> I want to be an old <span style="font-family: Arial; color: darkred">&#91;</span>wif<span style="font-family: Arial; color: darkred">&#93;</span>hat<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'People say I make strange choices<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span>but they are not strange for me<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> My sickness is that I am fascinated by human behavior by what is underneath the surface<span style="font-family: Arial, Helvetica, sans-serif; color: rgb(34, 62, 145)">&#44; </span>by the worlds inside people<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'I do not pretend to be captain weird<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> I just do what I do<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'Life is pretty good<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span>and why would it not it be<span style="font-family: Arial; color: rgb(34, 62, 145)">&#63;</span> I am a pirate<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span>after all<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'I am doing things that are true to me<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> The only thing I have a problem with is being labeled<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'The only creatures that are evolved enough to convey pure love are dogs and infants<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'Puberty was very vague<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44;</span> I literally locked myself in a room and played guitar<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'As a teenager I was so insecure<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> I was the type of guy that never fitted in because he never dared to choose<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> I was convinced I had absolutely no talent at all<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> For nothing<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> And that thought took away all my ambition too<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'I am doing things that are true to me<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> The only thing I have a problem with is being labeled<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'Me<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span>I am dishonest<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span>and you can always trust a dishonest man to be dishonest<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span> Honestly<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span>it is the honest ones you have to watch out for<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+    'I have this fear of clowns<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span>so I think that if I surround myself with them<span style="font-family: Arial; color: rgb(34, 62, 145)">&#44; </span>it will ward off all evil<span style="font-family: Arial; color: rgb(34, 62, 145)">&#46;</span>',
+]
 
-  /* Find the input field within the parent div */
-  const copyText = parentDiv.querySelector('input');
+let currentIndex = 0;
 
-  /* Select the text field */
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
-  copyText.blur();
-  /* Change the SVG icon */
-  const originalSVG = svgElement.innerHTML; // Save the original SVG
-  
-  svgElement.innerHTML = '<path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>'; // New SVG path
-
-  /* Change the SVG icon back to the original after 2 seconds */
-  setTimeout(function() {
-    svgElement.innerHTML = originalSVG;
-  }, 2000);
+function showNextQuote(first = false) {
+    const quoteElement = document.getElementById('quote');
+    quoteElement.style.opacity = '0';
+    if (first) {
+        quoteElement.innerHTML = quotes[0] + '<br> <span style="font-family: Arial, Helvetica, sans-serif; color: rgb(34, 62, 145)">&#8722;</span>Johnny Depp';
+        currentIndex++;
+    }
+    setTimeout(() => {
+        quoteElement.innerHTML = quotes[currentIndex] + '<br> <span style="font-family: Arial, Helvetica, sans-serif; color: rgb(34, 62, 145)">&#8722;</span>J Depp';
+        quoteElement.style.opacity = '1';
+        currentIndex = (currentIndex + 1) % quotes.length;
+    }, 1000); // Matches the CSS transition duration
 }
 
-window.onload = function() {
-  // Select all images with class 'commerce'
-  const images = document.querySelectorAll('.commerce');
 
-  // Loop through each image
-  for (let i = 0; i < images.length; i++) {
-      // Add click event listener to each image
-      images[i].addEventListener('click', function(event) {
-          // Redirect to the URL specified in the 'data-url' attribute of the clicked image
-          window.location.href = event.target.getAttribute('data-url');
-      });
-  }
+function startQuoteRotation() {
+    showNextQuote(true);
+    setInterval(showNextQuote, 7000); // Change quote every 5 seconds
 }
+
+document.addEventListener('DOMContentLoaded', startQuoteRotation);
+
