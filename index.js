@@ -37,7 +37,7 @@ function showNextQuote(first = false) {
 
 function startQuoteRotation() {
     showNextQuote(true);
-    setInterval(showNextQuote, 7000); // Change quote every 5 seconds
+    setInterval(showNextQuote, 8000); // Change quote every 8 seconds
 }
 
 document.addEventListener('DOMContentLoaded', startQuoteRotation);
